@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @curation_like.user %>
+</p>
+
+<p>
+  <strong>Curation:</strong>
+  <%= @curation_like.curation %>
+</p>
+
+<%= link_to 'Edit', edit_curation_like_path(@curation_like) %> |
+<%= link_to 'Back', curation_likes_path %>

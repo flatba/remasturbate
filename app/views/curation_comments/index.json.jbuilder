@@ -1,0 +1,1 @@
+json.array! @curation_comments, partial: 'curation_comments/curation_comment', as: :curation_comment

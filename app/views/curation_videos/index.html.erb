@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Curation Videos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Curation</th>
+      <th>Video</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @curation_videos.each do |curation_video| %>
+      <tr>
+        <td><%= curation_video.curation %></td>
+        <td><%= curation_video.video %></td>
+        <td><%= link_to 'Show', curation_video %></td>
+        <td><%= link_to 'Edit', edit_curation_video_path(curation_video) %></td>
+        <td><%= link_to 'Destroy', curation_video, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Curation Video', new_curation_video_path %>

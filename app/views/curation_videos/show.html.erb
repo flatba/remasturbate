@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Curation:</strong>
+  <%= @curation_video.curation %>
+</p>
+
+<p>
+  <strong>Video:</strong>
+  <%= @curation_video.video %>
+</p>
+
+<%= link_to 'Edit', edit_curation_video_path(@curation_video) %> |
+<%= link_to 'Back', curation_videos_path %>

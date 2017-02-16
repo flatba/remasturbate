@@ -10,7 +10,59 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170215224636) do
+ActiveRecord::Schema.define(version: 20170216115554) do
+
+  create_table "curation_comments", force: :cascade do |t|
+    t.integer  "curation_id"
+    t.integer  "user_id"
+    t.string   "comment"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["curation_id"], name: "index_curation_comments_on_curation_id"
+    t.index ["user_id"], name: "index_curation_comments_on_user_id"
+  end
+
+  create_table "curation_likes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "curation_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["curation_id"], name: "index_curation_likes_on_curation_id"
+    t.index ["user_id"], name: "index_curation_likes_on_user_id"
+  end
+
+  create_table "curation_videos", force: :cascade do |t|
+    t.integer  "curation_id"
+    t.integer  "video_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["curation_id"], name: "index_curation_videos_on_curation_id"
+    t.index ["video_id"], name: "index_curation_videos_on_video_id"
+  end
+
+  create_table "curations", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["user_id"], name: "index_curations_on_user_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string   "tag"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_likes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "video_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_likes_on_user_id"
+    t.index ["video_id"], name: "index_user_likes_on_video_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -37,6 +89,46 @@ ActiveRecord::Schema.define(version: 20170215224636) do
     t.string   "username"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "video_comments", force: :cascade do |t|
+    t.integer  "video_id"
+    t.integer  "user_id"
+    t.string   "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_video_comments_on_user_id"
+    t.index ["video_id"], name: "index_video_comments_on_video_id"
+  end
+
+  create_table "video_likes", force: :cascade do |t|
+    t.integer  "video_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_video_likes_on_user_id"
+    t.index ["video_id"], name: "index_video_likes_on_video_id"
+  end
+
+  create_table "video_tags", force: :cascade do |t|
+    t.integer  "tag_id"
+    t.integer  "video_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tag_id"], name: "index_video_tags_on_tag_id"
+    t.index ["video_id"], name: "index_video_tags_on_video_id"
+  end
+
+  create_table "videos", force: :cascade do |t|
+    t.string   "url"
+    t.string   "title"
+    t.string   "description"
+    t.string   "website"
+    t.integer  "user_id"
+    t.string   "thumbnails"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["user_id"], name: "index_videos_on_user_id"
   end
 
 end

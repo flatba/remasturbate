@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Curation Likes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Curation</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @curation_likes.each do |curation_like| %>
+      <tr>
+        <td><%= curation_like.user %></td>
+        <td><%= curation_like.curation %></td>
+        <td><%= link_to 'Show', curation_like %></td>
+        <td><%= link_to 'Edit', edit_curation_like_path(curation_like) %></td>
+        <td><%= link_to 'Destroy', curation_like, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Curation Like', new_curation_like_path %>

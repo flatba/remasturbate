@@ -1,0 +1,1 @@
+json.partial! "curation_likes/curation_like", curation_like: @curation_like
