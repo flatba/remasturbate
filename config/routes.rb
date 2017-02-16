@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   resources :video_likes
   resources :video_comments
   resources :videos
-  resources :user_likes
   devise_for :users
     root 'pages#index'
     get 'pages/show'
