@@ -1,0 +1,1 @@
+json.partial! "video_likes/video_like", video_like: @video_like

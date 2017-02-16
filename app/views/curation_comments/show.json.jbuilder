@@ -1,0 +1,1 @@
+json.partial! "curation_comments/curation_comment", curation_comment: @curation_comment

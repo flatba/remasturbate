@@ -1,0 +1,27 @@
+<%= form_for(curation_video) do |f| %>
+  <% if curation_video.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(curation_video.errors.count, "error") %> prohibited this curation_video from being saved:</h2>
+
+      <ul>
+      <% curation_video.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :curation_id %>
+    <%= f.text_field :curation_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :video_id %>
+    <%= f.text_field :video_id %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Curations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @curations.each do |curation| %>
+      <tr>
+        <td><%= curation.user %></td>
+        <td><%= curation.title %></td>
+        <td><%= curation.description %></td>
+        <td><%= link_to 'Show', curation %></td>
+        <td><%= link_to 'Edit', edit_curation_path(curation) %></td>
+        <td><%= link_to 'Destroy', curation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Curation', new_curation_path %>

@@ -1,0 +1,1 @@
+json.array! @curation_likes, partial: 'curation_likes/curation_like', as: :curation_like

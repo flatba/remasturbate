@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Curation Comments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Curation</th>
+      <th>User</th>
+      <th>Comment</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @curation_comments.each do |curation_comment| %>
+      <tr>
+        <td><%= curation_comment.curation %></td>
+        <td><%= curation_comment.user %></td>
+        <td><%= curation_comment.comment %></td>
+        <td><%= link_to 'Show', curation_comment %></td>
+        <td><%= link_to 'Edit', edit_curation_comment_path(curation_comment) %></td>
+        <td><%= link_to 'Destroy', curation_comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Curation Comment', new_curation_comment_path %>

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Curation:</strong>
+  <%= @curation_comment.curation %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @curation_comment.user %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @curation_comment.comment %>
+</p>
+
+<%= link_to 'Edit', edit_curation_comment_path(@curation_comment) %> |
+<%= link_to 'Back', curation_comments_path %>

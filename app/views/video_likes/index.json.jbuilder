@@ -1,0 +1,1 @@
+json.array! @video_likes, partial: 'video_likes/video_like', as: :video_like
