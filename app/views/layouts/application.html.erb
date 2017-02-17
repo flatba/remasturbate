@@ -4,13 +4,18 @@
     <title>Remasturbate</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+<!--     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %> -->
+    <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.css">
+    <script type="text/javascript" src="/bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/holder.js"></script>
+
   </head>
 
   <body>
     <header>
         <nav>
+            <h1>Re:Masturbation</h1>
             <% if user_signed_in? %>
                 <strong><%= link_to current_user.username, pages_show_path %></strong>
                 <%= link_to 'プロフィール変更', edit_user_registration_path %>
@@ -20,10 +25,21 @@
                 <%= link_to 'ログイン', new_user_session_path %>
             <% end %>
         </nav>
+        <nav>
+            <ul>
+                <li>人気の動画</li>
+                <li>カテゴリ</li>
+                <li>まとめ</li>
+                <li>保存リスト</li>
+            </ul>
+        </nav>
     </header>
-
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <p>パンくずリスト1 > パンくずリスト2</p>
+    <hr>
+    <div class="container">
+        <%= yield %>
+    </div>
   </body>
 </html>
