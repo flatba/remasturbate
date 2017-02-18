@@ -3,5 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_many :videos
+  has_many :video_comment
+  has_one :video, :through => :video_comment
+  has_many :video_likes
+  has_one :video, :through => :video_likes
 end
