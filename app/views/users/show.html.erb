@@ -1,8 +1,8 @@
 <p>ここにユーザーの画像</p>
-<img src="<%= user.thumbnails %>" />
+<img src="<%= current_user.thumbnails %>" />
 
 
-<%= user.description %>
+<%= current_user.description %>
 
 <%= link_to 'プロフィールを編集', edit_user_registration_path %>
 

@@ -4,7 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :video_comment
-  has_one :video, :through => :video_comment
+  has_many :videos
+  has_one :video, :through => :video_comments
   has_many :video_likes
   has_one :video, :through => :video_likes
 end
