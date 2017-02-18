@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+    devise_for :users
     root 'videos#index'
     get 'pages/show'
     resources :curation_likes
@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :video_likes
     resources :video_comments
     resources :videos
-    
+
     # get 'pages/index'
     # get 'pages/show'
 
