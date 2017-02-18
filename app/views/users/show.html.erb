@@ -13,11 +13,11 @@
 <% end %>
 
 <%= link_to controller: "devise/registrations", action: "edit" do %>
-<%= current_user.curation.count %>
+<%= current_user.curations.count %>
 <p>作成したまとめ</p>
 <% end %>
 
 <%= link_to controller: "devise/registrations", action: "edit" do %>
-<%= current_user.user_like.count %>
+<%= current_user.followers.count %>
 <p>フォロワー</p>
 <% end %>
