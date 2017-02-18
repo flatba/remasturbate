@@ -8,7 +8,7 @@
       <div class="caption">
         <p>お気に入り数：♡<%= video.video_likes.count%></p>
         <h3><%= video.title %></h3>
-        <ul>  
+        <ul>
           <% video.video_tag.each do |tag| %>
             <li><%= tag.tag.tag %></li>
           <% end %>
