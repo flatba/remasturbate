@@ -4,8 +4,8 @@
     <title>Remasturbate</title>
     <%= csrf_meta_tags %>
 
-<!--     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %> -->
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.css">
     <script type="text/javascript" src="/bootstrap/js/bootstrap.js"></script>
     <script type="text/javascript" src="/holder.js"></script>
@@ -18,7 +18,7 @@
             <h1>Re:Masturbation</h1>
             <% if user_signed_in? %>
                 <%= link_to 'プロフィール変更', edit_user_registration_path %>
-                <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+                <%= link_to 'ログアウト', destroy_user_session_path, :method => :delete %> 
             <% else %>
                 <%= link_to 'サインアップ', new_user_registration_path %>
                 <%= link_to 'ログイン', new_user_session_path %>
