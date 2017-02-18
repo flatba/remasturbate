@@ -1,0 +1,23 @@
+<p>ここにユーザーの画像</p>
+<img src="<%= user.thumbnails %>" />
+
+
+<%= user.description %>
+
+<%= link_to 'プロフィールを編集', edit_user_registration_path %>
+
+
+<%= link_to controller: "devise/registrations", action: "edit" do %>
+<%= current_user.videos.count %>
+<p>アップした動画</p>
+<% end %>
+
+<%= link_to controller: "devise/registrations", action: "edit" do %>
+<%= current_user.curation.count %>
+<p>作成したまとめ</p>
+<% end %>
+
+<%= link_to controller: "devise/registrations", action: "edit" do %>
+<%= current_user.user_like.count %>
+<p>フォロワー</p>
+<% end %>
