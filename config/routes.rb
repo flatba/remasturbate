@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :curation_tags
   get 'user/show'
 
   root 'videos#index'
@@ -11,8 +12,8 @@ Rails.application.routes.draw do
   resources :video_likes
   resources :video_comments
   resources :videos
-  get 'users/:id', to: 'users#show', as: :user
   devise_for :users
+  get 'users/:id', to: 'users#show', as: :user
   resources :users do
     member do
      get :following, :followers

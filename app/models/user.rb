@@ -9,6 +9,10 @@ class User < ApplicationRecord
   has_many :video_likes
   has_one :video, :through => :video_likes
   has_many :curations
+  has_many :curation_likes
+
+
+
 
   has_many :active_relationships, class_name:  "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :active_relationships,class_name:  "Relationship", foreign_key: "following_id", dependent: :destroy

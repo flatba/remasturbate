@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170218130826) do
+ActiveRecord::Schema.define(version: 20170219061358) do
 
   create_table "curation_comments", force: :cascade do |t|
     t.integer  "curation_id"
@@ -29,6 +29,15 @@ ActiveRecord::Schema.define(version: 20170218130826) do
     t.datetime "updated_at",  null: false
     t.index ["curation_id"], name: "index_curation_likes_on_curation_id"
     t.index ["user_id"], name: "index_curation_likes_on_user_id"
+  end
+
+  create_table "curation_tags", force: :cascade do |t|
+    t.integer  "tag_id"
+    t.integer  "curation_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["curation_id"], name: "index_curation_tags_on_curation_id"
+    t.index ["tag_id"], name: "index_curation_tags_on_tag_id"
   end
 
   create_table "curation_videos", force: :cascade do |t|

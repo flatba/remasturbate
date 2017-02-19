@@ -1,0 +1,1 @@
+json.array! @curation_tags, partial: 'curation_tags/curation_tag', as: :curation_tag
