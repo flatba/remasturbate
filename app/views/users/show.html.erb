@@ -1,0 +1,58 @@
+<p>ここにユーザーの画像</p>
+<img src="<%= current_user.thumbnails %>" />
+
+<%= current_user.description %>
+
+<%= link_to 'プロフィールを編集', edit_user_registration_path %>
+
+
+<%= link_to controller: "devise/registrations", action: "edit" do %>
+<%= current_user.videos.count %>
+<p>アップした動画</p>
+<% end %>
+
+<%= link_to controller: "devise/registrations", action: "edit" do %>
+<%= current_user.curations.count %>
+<p>作成したまとめ</p>
+<% end %>
+
+<%= link_to controller: "devise/registrations", action: "edit" do %>
+<%= current_user.followers.count %>
+<p>フォロワー</p>
+<% end %>
+
+<hr>
+<h3>ライクした動画</h3>
+<% current_user.video_likes.each do |video_like| %>
+  <img src="<%= video_like.video.thumbnails %>" /><br>
+  <%= video_like.video.title %><br>
+  <% video_like.video.video_tag.each do |video_tag| %>
+    <span><%= video_tag.tag.tag %> |  </span>
+  <% end %>
+  <p><%= video_like.video.description %></p>
+  <p>♡<%= video_like.video.video_likes.count %></p>
+<% end %>
+
+<h3>ライクしたまとめ</h3>
+<% current_user.curations.each do |curation| %>
+  <h4><%= curation.title %></h4><br>
+  <% curation.curation_tags.each do |curation_tag| %>
+    <span> <%= curation_tag.tag.tag %> | </span>
+  <% end %><br>
+  <p><%= curation.description %></p>
+  <p><img src="<%= current_user.thumbnails %>" /><%= current_user.username %></p>
+  <p>動画の本数:<%= curation.curation_videos.count %></p>
+  <p>視聴者数[todo]</p>
+  <p>このキュレーションのlike数:<%= curation.curation_likes.count %></p>
+<% end %>
+
+<h3>お気に入りユーザー</h3>
+<% current_user.following.each do |follow| %>
+  <p>サムネイル：<%= follow.thumbnails %></p>
+  <p>名前：<%= follow.username %></p>
+  <p>説明：<%= follow.description %></p>
+  <p>キュレーション：<%= follow.curations.count %></p>
+  <p>フォロワー数：<%= follow.followers.count %></p>
+<% end %>
+
+
