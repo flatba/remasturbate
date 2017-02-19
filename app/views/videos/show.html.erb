@@ -2,8 +2,9 @@
 
 <!-- 動画の表示 -->
 <iframe src=<%= @video.url %> frameborder=0 width=510 height=400 scrolling=no allowfullscreen=allowfullscreen></iframe>
-
-<p>save数：+未実装 / お気に入り数：♡<%= @video.video_likes.count%> / watch数👀：未実装 / 追加日：+<%= @video.created_at%></p>
+<p>
+  save数：+未実装 / お気に入り数：♡<%= @video.video_likes.count%> / watch数👀：未実装 / 追加日：+<%= @video.created_at%>
+</p>
 
 <div>
   <button type="button" class="btn btn-primary">保存</button>
@@ -15,7 +16,6 @@
 
 <hr>
 <!-- 動画情報の表示 -->
-
 <p>
   <h3><strong>Title:</strong><%= @video.title %></h3>
 </p>
@@ -48,13 +48,15 @@
       <div class="comment">
         <%= comment.user.username %>
         <%= comment.comment %>
-      </div>
+    　　</div>
+
+      <div><%= comment.text_field :comment %></div>
+      <%= comment.submit %>
+
+
     <% end %>
   <div><p>コメント入力</p></div>
-  <% form_for(@video) do |v| %>
-  <div><%= v.text_field :video, class: video_comments %></div>
-  <%= v.submit %>
-<% end %>
+
 </div>
 
 
