@@ -6,7 +6,10 @@
 <p>save数：+未実装 / お気に入り数：♡<%= @video.video_likes.count%> / watch数👀：未実装 / 追加日：+<%= @video.created_at%></p>
 
 <div>
-  <button type="button" class="btn btn-primary">保存</button>
+  <%= link_to  '保存', new_curation_path, method: :create, data: { confirm: 'Are you sure?'}, class: "btn btn-primary" %>
+
+  <%= link_to "リンク名", new_report_path(:report_id => @report.id, :params_controller => params[:controller]) %>
+
   <button type="button" class="btn btn-primary">エロいね！</button>
   <a href="https://www.xvideos.com/video25459543/slippery_and_wet_oriental_gangbang"><button type="button" class="btn btn-primary">動画元(コンボボックスにしたい)</button></a>
   <button type="button" class="btn btn-primary">その他</button>
@@ -15,7 +18,6 @@
 
 <hr>
 <!-- 動画情報の表示 -->
-
 <p>
   <h3><strong>Title:</strong><%= @video.title %></h3>
 </p>
@@ -51,10 +53,7 @@
       </div>
     <% end %>
   <div><p>コメント入力</p></div>
-  <% form_for(@video) do |v| %>
-  <div><%= v.text_field :video, class: video_comments %></div>
-  <%= v.submit %>
-<% end %>
+
 </div>
 
 
