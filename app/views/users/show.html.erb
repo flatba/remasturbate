@@ -3,20 +3,13 @@
 
 <%= @user.description %>
 
+<% if @user.id == current_user.id %>
 <%= link_to 'プロフィールを編集', edit_user_registration_path %>
-
-
-<%= @user.videos.count %>
-<p>アップした動画</p>
 <% end %>
 
-<%= @user.curations.count %>
-<p>作成したまとめ</p>
-<% end %>
-
-<%= @user.followers.count %>
-<p>フォロワー</p>
-<% end %>
+<p>アップした動画：<%= @user.videos.count %></p>
+<p>作成したまとめ：<%= @user.curations.count %></p>
+<p>フォロワー：<%= @user.followers.count %></p>
 
 <hr>
 <h3>ライクした動画</h3>
