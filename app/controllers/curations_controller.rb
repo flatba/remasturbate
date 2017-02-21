@@ -10,6 +10,14 @@ class CurationsController < ApplicationController
   # GET /curations/1
   # GET /curations/1.json
   def show
+    @videos = @curation.videos.all
+    @c_tags = []
+    @videos.each do |video|
+      video.video_tags.each do |vtag|
+        @c_tags.push(vtag.tag)
+      end
+    end
+
   end
 
   # GET /curations/new

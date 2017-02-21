@@ -13,10 +13,11 @@
         <% end %>
 
         <ul>
-          <% video.video_tag.each do |tag| %>
+          <% video.video_tags.each do |tag| %>
             <li><%= tag.tag.tag %></li>
           <% end %>
         </ul>
+
         <div><p>動画リストに保存</p></div>
           <% video.video_comments.each do |comment| %>
             <div class="comment">

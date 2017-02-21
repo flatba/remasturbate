@@ -12,7 +12,6 @@
         <p>動画本数：<%= curation.curation_videos.count%></p>
         <p>閲覧数：[todo]</p>
         <p>お気に入り数：♡<%= curation.curation_likes.count%></p>
-
         <%= link_to curation_path(curation) do %>
           <strong><h3><%= curation.title %></h3></strong>
         <% end %>
