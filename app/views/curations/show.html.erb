@@ -1,19 +1,31 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>User:</strong>
-  <%= @curation.user %>
-</p>
+<h1><%= @curation.title %></h1>
+<ul>
+  <% @c_tags.each do |c_tag| %>
+    <li><%= c_tag.tag %></li>
+  <% end %>
+</ul>
+<p><%= @curation.description %></p>
+<div class="col-xs-6">1dayブックマーク</div>
+<div class="col-xs-6">お気に入り</div>
+<% @curation.curation_videos.each.with_index(1) do |curation_video, v_num| %>
+  <%= v_num %>本目
+  <h2><%= curation_video.headline %></h2>
+  <p><%= curation_video.description %></p>
+  <div>
+    <% video = curation_video.video %>
+    <h3><%= video.title %></h3>
+    <ul>
+      <% video.video_tags.each do |v_tag| %>
+        <li><%= v_tag.tag.tag %></li>
+      <% end %>
+    </ul>
+    <span>♡<%= video.video_likes.count %></span>
+  </div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @curation.title %>
-</p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @curation.description %>
-</p>
 
-<%= link_to 'Edit', edit_curation_path(@curation) %> |
+<% end %>
+
 <%= link_to 'Back', curations_path %>

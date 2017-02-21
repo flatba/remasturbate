@@ -2,29 +2,39 @@
 
 <h1>Curations</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Title</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @curations.each do |curation| %>
-      <tr>
-        <td><%= curation.user %></td>
-        <td><%= curation.title %></td>
-        <td><%= curation.description %></td>
-        <td><%= link_to 'Show', curation %></td>
-        <td><%= link_to 'Edit', edit_curation_path(curation) %></td>
-        <td><%= link_to 'Destroy', curation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="row">
+  <% @curations.each do |curation| %>
+  <div class="col-xs-6">
+    <div class="thumbnail">
+      <img src="holder.js/200x200" alt="...">
+      <div class="caption">
+        <p>動画本数：<%= curation.curation_videos.count%></p>
+        <p>閲覧数：[todo]</p>
+        <p>お気に入り数：♡<%= curation.curation_likes.count%></p>
+        <%= link_to curation_path(curation) do %>
+          <strong><h3><%= curation.title %></h3></strong>
+        <% end %>
+
+        <ul>
+          <% curation.videos.each do |video| %>
+            <% video.video_tags.each do |tag| %>
+              <li><%= tag.tag.tag %></li>
+            <% end %>
+          <% end %>
+        </ul>
+        <div><p>[todo]保存リストに追加</p></div>
+        <% curation.curation_comments.each do |comment| %>
+          <div class="comment">
+            <%= comment.user.username %>
+            <%= comment.comment %>
+          </div>
+        <% end %>
+        </div>
+    </div>
+  </div>
+  <% end %>
+</div>
 
 <br>
 
