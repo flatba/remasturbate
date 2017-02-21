@@ -44,18 +44,11 @@
 <!-- コメントの表示 -->
 <div class="caption">
   <div><p>コメント</p></div>
-    <% @video.video_comments.each do |comment| %>
-      <div class="comment">
-        <%= comment.user.username %>
-        <%= comment.comment %>
-    　　</div>
-
-      <div><%= comment.text_field :comment %></div>
-      <%= comment.submit %>
-
-
+    <%= form_for(@comment) do |f| %>
+      <p>from:</p><p><%= f.text_field :comment %></p>
+      <%= f.submit 'コメントを投稿する' %>
     <% end %>
-  <div><p>コメント入力</p></div>
+
 
 </div>
 
