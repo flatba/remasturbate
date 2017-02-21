@@ -17,6 +17,7 @@
         <nav>
             <h1>Re:Masturbation</h1>
             <% if user_signed_in? %>
+                <%= link_to 'プロフィール表示', user_path(current_user) %>
                 <%= link_to 'プロフィール変更', edit_user_registration_path %>
                 <%= link_to 'ログアウト', destroy_user_session_path, :method => :delete %> 
             <% else %>

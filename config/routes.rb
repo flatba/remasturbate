@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :curation_tags
+  get 'user/show'
+
   root 'videos#index'
   resources :curation_likes
   resources :curation_comments
@@ -10,5 +13,11 @@ Rails.application.routes.draw do
   resources :video_comments
   resources :videos
   devise_for :users
+  get 'users/:id', to: 'users#show', as: :user
+  resources :users do
+    member do
+     get :following, :followers
+    end
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

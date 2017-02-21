@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Tag:</strong>
+  <%= @curation_tag.tag %>
+</p>
+
+<p>
+  <strong>Curation:</strong>
+  <%= @curation_tag.curation %>
+</p>
+
+<%= link_to 'Edit', edit_curation_tag_path(@curation_tag) %> |
+<%= link_to 'Back', curation_tags_path %>

@@ -5,4 +5,5 @@ class Curation < ApplicationRecord
   has_many :curation_likes
   has_many :users, :through => :curation_likes
   has_many :curation_comments
+  has_many :curation_tags  
 end

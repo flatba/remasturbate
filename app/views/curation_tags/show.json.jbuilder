@@ -1,0 +1,1 @@
+json.partial! "curation_tags/curation_tag", curation_tag: @curation_tag
