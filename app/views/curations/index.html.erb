@@ -9,26 +9,28 @@
     <div class="thumbnail">
       <img src="holder.js/200x200" alt="...">
       <div class="caption">
-        <p>動画本数：<%= curation.videos.count%></p>
+        <p>動画本数：<%= curation.curation_videos.count%></p>
         <p>閲覧数：[todo]</p>
-        <p>お気に入り数：♡<%= video.video_likes.count%></p>
+        <p>お気に入り数：♡<%= curation.curation_likes.count%></p>
 
-        <%= link_to video_path(video) do %>
-          <strong><h3><%= video.title %></h3></strong>
+        <%= link_to curation_path(curation) do %>
+          <strong><h3><%= curation.title %></h3></strong>
         <% end %>
 
         <ul>
-          <% video.video_tag.each do |tag| %>
-            <li><%= tag.tag.tag %></li>
+          <% curation.videos.each do |video| %>
+            <% video.video_tags.each do |tag| %>
+              <li><%= tag.tag.tag %></li>
+            <% end %>
           <% end %>
         </ul>
-        <div><p>動画リストに保存</p></div>
-          <% video.video_comments.each do |comment| %>
-            <div class="comment">
-              <%= comment.user.username %>
-              <%= comment.comment %>
-            </div>
-          <% end %>
+        <div><p>[todo]保存リストに追加</p></div>
+        <% curation.curation_comments.each do |comment| %>
+          <div class="comment">
+            <%= comment.user.username %>
+            <%= comment.comment %>
+          </div>
+        <% end %>
         </div>
     </div>
   </div>

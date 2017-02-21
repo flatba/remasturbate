@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170216115554) do
+ActiveRecord::Schema.define(version: 20170221003410) do
 
   create_table "curation_comments", force: :cascade do |t|
     t.integer  "curation_id"
@@ -31,11 +31,22 @@ ActiveRecord::Schema.define(version: 20170216115554) do
     t.index ["user_id"], name: "index_curation_likes_on_user_id"
   end
 
+  create_table "curation_tags", force: :cascade do |t|
+    t.integer  "tag_id"
+    t.integer  "curation_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["curation_id"], name: "index_curation_tags_on_curation_id"
+    t.index ["tag_id"], name: "index_curation_tags_on_tag_id"
+  end
+
   create_table "curation_videos", force: :cascade do |t|
     t.integer  "curation_id"
     t.integer  "video_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "headline"
+    t.string   "description"
     t.index ["curation_id"], name: "index_curation_videos_on_curation_id"
     t.index ["video_id"], name: "index_curation_videos_on_video_id"
   end
@@ -47,6 +58,16 @@ ActiveRecord::Schema.define(version: 20170216115554) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["user_id"], name: "index_curations_on_user_id"
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer  "follower_id"
+    t.integer  "following_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["follower_id", "following_id"], name: "index_relationships_on_follower_id_and_following_id", unique: true
+    t.index ["follower_id"], name: "index_relationships_on_follower_id"
+    t.index ["following_id"], name: "index_relationships_on_following_id"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -78,6 +99,8 @@ ActiveRecord::Schema.define(version: 20170216115554) do
     t.string   "provider"
     t.string   "uid"
     t.string   "username"
+    t.string   "thumbnails"
+    t.string   "description"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
