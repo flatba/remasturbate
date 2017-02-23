@@ -1,9 +1,34 @@
 <p id="notice"><%= notice %></p>
+<h1>タグ検索</h1>
+<span>トップ > <%= @tag.tag %></span>
+<div class="row">
+  <% @tag.videos.each do |video| %>
+  <div class="col-xs-6">
+    <div class="thumbnail">
+      <img src="holder.js/200x200" alt="...">
+      <div class="caption">
+        <p>お気に入り数：♡<%= video.video_likes.count%></p>
 
-<p>
-  <strong>Tag:</strong>
-  <%= @tag.tag %>
-</p>
+        <%= link_to video_path(video) do %>
+          <strong><h3><%= video.title %></h3></strong>
+        <% end %>
 
-<%= link_to 'Edit', edit_tag_path(@tag) %> |
-<%= link_to 'Back', tags_path %>
+        <ul>
+          <% video.video_tags.each do |tag| %>
+            <li><%= tag.tag.tag %></li>
+          <% end %>
+        </ul>
+
+        <div><p>動画リストに保存</p></div>
+          <% video.video_comments.each do |comment| %>
+            <div class="comment">
+              <%= comment.user.username %>
+              <%= comment.comment %>
+            </div>
+          <% end %>
+        </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+<%= link_to 'New Video', new_video_path %>
