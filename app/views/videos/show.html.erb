@@ -1,7 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <!-- 動画の表示 -->
-<iframe src=<%= @video.url %> frameborder=0 width=510 height=400 scrolling=no allowfullscreen=allowfullscreen></iframe>
+
+<iframe src="<%= @video.url %>" frameborder=0 width=510 height=400 scrolling=no allowfullscreen=allowfullscreen></iframe>
 <p>
   save数：+未実装 / お気に入り数：♡<%= @video.video_likes.count%> / watch数👀：未実装 / 追加日：+<%= @video.created_at%>
 </p>
