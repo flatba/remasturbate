@@ -45,7 +45,11 @@
 
 <hr>
 <!-- コメントの表示 -->
-
+  <div><p>コメント一覧</p></div>
+    <%= @video_comments.each do |video_comment| %>
+    <p><%= video_comment.user %> : <%= video_comment.comment %></p>
+    <% end %>
+  </div>
 
 <hr>
   <div><p>コメント</p></div>
@@ -56,6 +60,7 @@
       <%= f.submit 'コメントを投稿する' %>
     <% end %>
 </div>
+
 
 <hr>
 <!-- 関連動画表示 -->

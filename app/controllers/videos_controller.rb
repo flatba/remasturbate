@@ -13,7 +13,7 @@ class VideosController < ApplicationController
   def show
     @comment = current_user.videos.find(params[:id]).video_comments.new
     @videos = Video.all
-    @comments = videos.find(params[:id]).video_comments.all
+    @video_comments = Video.find(params[:id]).video_comments.all
   end
 
   # GET /videos/new
