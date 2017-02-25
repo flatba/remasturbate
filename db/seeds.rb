@@ -1,24 +1,7 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
-User.create(username: "user1" ,email: "user@test.com", encrypted_password: "$2a$11$lqxp/uUOkflGq.dpj6HChe7804e4RSVm1iYz5fTYCI3Ji7gTjuuwa")
-User.create(username: "user2" ,email: "user2@test.com", encrypted_password: "$2a$11$lqxp/uUOkflGq.dpj6HChe7804e4RSVm1iYz5fTYCI3Ji7gTjuuwa")
-
-Video.create(thumbnails: "https://img-hw.xvideos.com/videos/thumbs169ll/ad/e1/44/ade144854ec8c27fcfb347e93d13a387/ade144854ec8c27fcfb347e93d13a387.16.jpg",url: "xvideos.com", title: "エロイタイトル", description: "エロイ説明", website: "xvideos", user_id: 1)
-Tag.create(tag: "巨乳")
-Tag.create(tag: "女子高生")
-Tag.create(tag: "人妻")
-User.first.video_likes.first.video.video_tag.create(tag_id: 1, video_id:1)
-User.first.video_likes.first.video.video_tag.create(tag_id: 2, video_id:1)
-User.first.video_likes.new(:video_id => 1).save
-User.first.curations.create(title: "【常時更新】低身長が好き！ロリ動画まとめ厳選リスト", description: "笑顔でフェ ラをして、自分から素股、クンニされながらクリを触り、自ら入れた後は腰を動かしまくり最後は中出し。中出しされた後に溢れてるとこがかな りエロい")
-User.first.curations.first.curation_videos.create(video_id: 1)
-User.first.curation_likes.create(:curation_id => 1)
-User.first.curations.first.curation_tags.create(tag_id: 1, curation_id:1)
-Relationship.create(follower_id: 2, following_id:1)
-
+User.create!([
+  {email: "test2@test.jp", encrypted_password: "$2a$11$F7HcoibhOGQKUvRzy4dSZuxJ7k33QjuTaNxyQBR5po1hM63sK83lK", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 2, current_sign_in_at: "2017-02-25 10:40:30", last_sign_in_at: "2017-02-25 10:38:07", current_sign_in_ip: "10.0.2.2", last_sign_in_ip: "10.0.2.2", confirmation_token: nil, confirmed_at: nil, confirmation_sent_at: nil, unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, provider: nil, uid: nil, username: "test2", thumbnails: nil, description: nil}
+])
+Video.create!([
+  {url: "https://www.xvideos.com/video25018523/_a", title: "個人撮影 パイパンのむちむち彼女 A", description: "他のサイトより 規模が大きく て 質が良い ... ", website: "XVIDEOS.COM", user_id: 1, thumbnails: "https://img-egc.xvideos.com/videos/thumbs169ll/0e/72/eb/0e72ebb0b5bf4bff2c489c36f0310ae6/0e72ebb0b5bf4bff2c489c36f0310ae6.23.jpg"},
+  {url: "https://www.xvideos.com/video26464963/fuck_daughter_at_home_full_http_zo.ee_2mut", title: "fuck daughter at home full", description: "ああああああああああああぁ", website: "XVIDEOS.COM", user_id: 1, thumbnails: "https://img-hw.xvideos.com/videos/thumbs169ll/d8/f4/a5/d8f4a58f3b843cfe64863edabc114d2e/d8f4a58f3b843cfe64863edabc114d2e.22.jpg"}
+])
