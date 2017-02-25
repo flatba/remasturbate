@@ -11,8 +11,9 @@ class VideosController < ApplicationController
   # GET /videos/1
   # GET /videos/1.json
   def show
-    @comment = @video.video_comments.new
+    @comment = current_user.videos.find(params[:id]).video_comments.new
     @videos = Video.all
+    @comments = videos.find(params[:id]).video_comments.all
   end
 
   # GET /videos/new
