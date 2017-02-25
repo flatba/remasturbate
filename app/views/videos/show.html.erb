@@ -45,20 +45,20 @@
 
 <hr>
 <!-- コメントの表示 -->
-  <div><p>コメント一覧</p></div>
-    <%= @video_comments.each do |video_comment| %>
-    <p><%= video_comment.user %> : <%= video_comment.comment %></p>
-    <% end %>
-  </div>
+<div><p>コメント一覧</p></div>
+  <% @video_comments.each do |video_comment| %>
+    <p>USER<%= video_comment.user_id %>:　<%= video_comment.comment %></p>
+  <% end %>
+</div>
 
 <hr>
-  <div><p>コメント</p></div>
-    <%= form_for(@comment) do |f| %>
-      <p><%= f.hidden_field :video_id , :value => @video.id %>
-      <p><%= f.hidden_field :user_id , :value => current_user.id %>
-      <%= f.text_field :comment %>
-      <%= f.submit 'コメントを投稿する' %>
-    <% end %>
+<div><p>コメント</p></div>
+  <%= form_for(@comment) do |f| %>
+    <p><%= f.hidden_field :video_id , :value => @video.id %>
+    <p><%= f.hidden_field :user_id , :value => current_user.id %>
+    <%= f.text_field :comment %>
+    <%= f.submit 'コメントを投稿する' %>
+  <% end %>
 </div>
 
 
