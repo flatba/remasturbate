@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :tags
   resources :video_likes
   resources :video_comments
+  get 'videos/:id', to: 'videos#show', as: :video
   resources :videos
   devise_for :users
   get 'users/:id', to: 'users#show', as: :user
