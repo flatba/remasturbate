@@ -1,26 +1,20 @@
 <p id="notice"><%= notice %></p>
 
 <p><strong>ログイン中のユーザ：</strong><%= current_user.id %></p>
-<hr>
 
-<!-- 動画の表示 -->
-<iframe src="<%= @video.url %>" frameborder=0 width=510 height=400 scrolling=no allowfullscreen=allowfullscreen></iframe>
+<hr><!-- 動画 -->
 <p>
-  save数：+未実装 / お気に入り数：♡<%= @video.video_likes.count%> / watch数👀：未実装 / 追加日：+<%= @video.created_at%>
+  <iframe src="<%= @video.url %>" frameborder=0 width=510 height=400 scrolling=no allowfullscreen=allowfullscreen></iframe>
 </p>
 
-<div>
-  <button type="button" class="btn btn-primary">保存</button>
-  <button type="button" class="btn btn-primary">エロいね！</button>
-  <a href="https://www.xvideos.com/video25459543/slippery_and_wet_oriental_gangbang"><button type="button" class="btn btn-primary">動画元(コンボボックスにしたい)</button></a>
-  <button type="button" class="btn btn-primary">その他</button>
-  <button type="button" class="btn btn-primary">ツイート</button>
-</div>
-
-<hr>
-<!-- 動画情報の表示 -->
 <p>
   <h3><strong>Title:</strong><%= @video.title %></h3>
+</p>
+
+<p>
+  <% @video.video_tags.each do |tag| %>
+    <li><%= tag.tag.tag %></li>
+  <% end %>
 </p>
 
 <p>
@@ -29,29 +23,18 @@
 </p>
 
 <p>
-  <strong>Website:</strong>
-  <%= @video.website %>
+  <button type="button" class="btn btn-primary">1Dayブックマーク</button>
+  <button type="button" class="btn btn-primary">お気に入り</button>
 </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @video.user %>
-</p>
-
-
-<hr>
-<!-- キーワード（タグ）の表示 -->
-<div><p>キーワード</p></div>
-
-<hr>
-<!-- コメントの表示 -->
+<hr><!-- コメントの表示 -->
 <div><p>コメント一覧</p></div>
   <% @video_comments.each do |video_comment| %>
     <p>USER<%= video_comment.user_id %>:　<%= video_comment.comment %></p>
   <% end %>
 </div>
 
-<hr>
+<hr><!-- コメント欄 -->
 <div><p>コメント</p></div>
   <%= form_for(@comment) do |f| %>
     <p><%= f.hidden_field :video_id , :value => @video.id %>
@@ -61,8 +44,7 @@
   <% end %>
 </div>
 
-<hr>
-<!-- 関連動画表示 -->
+<hr><!-- 関連動画表示 -->
 <div><p>関連動画表示</p></div>
 <% @videos.each do | video | %>
   <div style="padding: 10px; margin-bottom: 10px; border: 1px dotted #333333; border-radius: 5px;">
@@ -71,10 +53,8 @@
   </div>
 <% end %>
 
-
-
 <hr>
 <%= link_to 'Edit', edit_video_path(@video) %> |
-<%= link_to 'Back', videos_path %>
+<%= link_to 'Top', root_path %>
 
 
