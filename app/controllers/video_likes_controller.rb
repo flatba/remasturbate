@@ -24,12 +24,13 @@ class VideoLikesController < ApplicationController
   # POST /video_likes
   # POST /video_likes.json
   def create
-    @video_like = VideoLike.new(video_like_params)
+    @video_like = current_user.video_likes.new(video_id: params[:video_like][:video_id])
 
     respond_to do |format|
       if @video_like.save
         format.html { redirect_to @video_like, notice: 'Video like was successfully created.' }
         format.json { render :show, status: :created, location: @video_like }
+
       else
         format.html { render :new }
         format.json { render json: @video_like.errors, status: :unprocessable_entity }
