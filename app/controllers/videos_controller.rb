@@ -6,13 +6,61 @@ class VideosController < ApplicationController
   def index
     @videos = Video.all
   end
-  
+
+  def insert_pv
+    @popular = @video.populars.find_or_create_by(:date => Date.today, :term => 0)
+    @popular.increment(:pageview)
+  end
+
+  def add_oneday_bookmark
+    if current_user
+      video_id = params[:id].to_i
+      if current_user.bookmarks.find_by(video_id: video_id).present?
+        current_user.bookmarks.destroy(video_id: video_id)
+      else
+        current_user.bookmarks.create(video_id: video_id)
+      end
+    else
+      flash.now[:notice] = '1dayブックマークの利用にはログインが必要です'
+    end
+  end
+
+  def oneday_bookmark
+    @bookmarks = current_user.bookmarks.all
+  end
+
 
   # GET /videos/1
   # GET /videos/1.json
   def show
     @comment = @video.video_comments.new
+    insert_pv
   end
+
+  #popularについて
+  #まずは、その日移行で
+  def popular_today
+     #今日のpopularからやつを出す 
+     @populars = Popular.where(:date => Date.today, :term => 0)
+  end
+
+  def popular_week
+    #weekは過去7日間のやつを出す
+    @populars = Popular.where(:date=> 1.weeks.ago..Time.now)
+  end
+
+  def popular_month
+    #monthは過去1ヶ月間
+    @populars = Popular.where(:date=> 1.months.ago..Time.now)
+  end
+
+  def popular
+    #allは合算を出す
+    @populars = Popular.all
+  end
+
+
+  
 
   # GET /videos/new
   def new

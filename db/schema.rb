@@ -10,8 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+ActiveRecord::Schema.define(version: 20170227221954) do
 
-ActiveRecord::Schema.define(version: 20170221003410) do
+  create_table "bookmarks", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "video_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_bookmarks_on_user_id"
+    t.index ["video_id"], name: "index_bookmarks_on_video_id"
+  end
 
   create_table "curation_comments", force: :cascade do |t|
     t.integer  "curation_id"
@@ -59,6 +67,16 @@ ActiveRecord::Schema.define(version: 20170221003410) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["user_id"], name: "index_curations_on_user_id"
+  end
+
+  create_table "populars", force: :cascade do |t|
+    t.integer  "video_id"
+    t.integer  "term"
+    t.date     "date"
+    t.integer  "pageview"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["video_id"], name: "index_populars_on_video_id"
   end
 
   create_table "relationships", force: :cascade do |t|

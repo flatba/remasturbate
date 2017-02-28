@@ -7,5 +7,6 @@ class Video < ApplicationRecord
   has_many :users, :through => :video_comments
   has_many :video_likes
   has_many :users, :through => :video_likes
-
+  has_many :populars
+  has_many :bookmarks
 end

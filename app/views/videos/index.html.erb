@@ -18,7 +18,7 @@
           <% end %>
         </ul>
 
-        <div><p>動画リストに保存</p></div>
+        <div><%= button_to '1dayブックマークする', add_oneday_bookmark_path(video.id), method: :post %></div>
           <% video.video_comments.each do |comment| %>
             <div class="comment">
               <%= comment.user.username %>

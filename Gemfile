@@ -22,6 +22,8 @@ group :development, :test do
   gem 'seed_dump'
 end
 
+# batch処理のcron設定
+gem 'whenever', :require => false
 # Devise
 gem 'devise'
 

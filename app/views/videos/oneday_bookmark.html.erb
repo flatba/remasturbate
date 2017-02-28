@@ -1,0 +1,11 @@
+<% @bookmarks.each do |bookmark| %>
+  <img src="<%= bookmark.video.thumbnails %>">
+  <h1><%= bookmark.video.title %></h1>
+  <% bookmark.video.video_tags.each do |video_tag| %>
+      <span><%= video_tag.tag.tag %> |  </span>
+  <% end %>
+  <p><%= bookmark.video.description %></p>
+  <p><%= button_to '1dayブックマーク', add_oneday_bookmark_path(bookmark.video) %></p>
+  <p>お気に入り</p>
+  <p>もっとみる</p>
+<% end %>
