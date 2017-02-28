@@ -28,7 +28,7 @@ class VideoLikesController < ApplicationController
 
     respond_to do |format|
       if @video_like.save
-        format.html { redirect_to @video_like, notice: 'Video like was successfully created.' }
+        format.html { redirect_to controller: 'videos', action: 'show', id: params[:video_like][:video_id] }
         format.json { render :show, status: :created, location: @video_like }
 
       else
