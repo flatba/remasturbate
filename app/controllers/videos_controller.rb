@@ -1,5 +1,5 @@
 class VideosController < ApplicationController
-  before_action :set_video, only: [:show, :edit, :update, :destroy]
+  before_action :set_video, :authenticate_user!, only: [:show, :edit, :update, :destroy]
 
   # GET /videos
   # GET /videos.json
@@ -7,13 +7,13 @@ class VideosController < ApplicationController
     @videos = Video.all
   end
 
-
   # GET /videos/1
   # GET /videos/1.json
   def show
-    @comment = current_user.videos.find(params[:id]).video_comments.new
+    @comment = Video.find(params[:id]).video_comments.new
     @videos = Video.all
     @video_comments = Video.find(params[:id]).video_comments.all
+    @video_like = Video.find(params[:id]).video_likes.new
   end
 
   # GET /videos/new
