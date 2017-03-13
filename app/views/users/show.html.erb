@@ -16,7 +16,7 @@
 <% @user.video_likes.each do |video_like| %>
   <img src="<%= video_like.video.thumbnails %>" /><br>
   <%= video_like.video.title %><br>
-  <% video_like.video.video_tag.each do |video_tag| %>
+  <% video_like.video.video_tags.each do |video_tag| %>
     <span><%= video_tag.tag.tag %> |  </span>
   <% end %>
   <p><%= video_like.video.description %></p>
