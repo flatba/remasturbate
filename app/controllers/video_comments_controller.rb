@@ -28,8 +28,7 @@ class VideoCommentsController < ApplicationController
 
     respond_to do |format|
       if @video_comment.save
-        format.html { redirect_to @video_comment, notice: 'Video comment was successfully created.' }
-        format.json { render :show, status: :created, location: @video_comment }
+        format.html { redirect_to controller: 'videos', action: 'show', id: params[:video_comment][:video_id] }
       else
         format.html { render :new }
         format.json { render json: @video_comment.errors, status: :unprocessable_entity }

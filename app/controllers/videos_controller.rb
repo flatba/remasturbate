@@ -6,12 +6,14 @@ class VideosController < ApplicationController
   def index
     @videos = Video.all
   end
-  
+
 
   # GET /videos/1
   # GET /videos/1.json
   def show
-    @comment = @video.video_comments.new
+    @comment = current_user.videos.find(params[:id]).video_comments.new
+    @videos = Video.all
+    @video_comments = Video.find(params[:id]).video_comments.all
   end
 
   # GET /videos/new
@@ -32,6 +34,7 @@ class VideosController < ApplicationController
       if @video.save
         format.html { redirect_to @video, notice: 'Video was successfully created.' }
         format.json { render :show, status: :created, location: @video }
+
       else
         format.html { render :new }
         format.json { render json: @video.errors, status: :unprocessable_entity }
