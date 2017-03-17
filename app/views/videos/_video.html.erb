@@ -1,0 +1,22 @@
+<tr class="video">
+    <td>
+        <div class="thumbnail"><img src="holder.js/200x200" alt="...">
+            <div class="caption"><strong><%= video.title %></strong>
+                <p>お気に入り数：♡<%= video.video_likes.count%></p>
+                <ul>
+                    <% video.video_tags.each do |tag| %>
+                        <li><%= tag.tag.tag %></li>
+                    <% end %>
+                </ul>
+                <p>動画リストに保存</p>
+                <% video.video_comments.each do |comment| %>
+                    <div class="comment">
+                        <%= comment.user.username %>
+                        <%= comment.comment %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </td>
+</tr>
+
