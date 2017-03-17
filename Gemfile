@@ -70,3 +70,7 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# Infinite Scroll
+gem "jquery-turbolinks" # Turbolinksで遷移したときもjQuery.ready()を呼び出してくれる
+gem 'kaminari', :git => "git://github.com/amatsuda/kaminari.git", :branch => 'master'
