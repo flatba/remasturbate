@@ -15,11 +15,11 @@
   <body>
     <header>
         <nav>
-            <h1>Re:Masturbation</h1>
+            <h1><%= link_to 'Re:Masturbation', root_path %></h1>
             <% if user_signed_in? %>
                 <%= link_to 'プロフィール表示', user_path(current_user) %>
                 <%= link_to 'プロフィール変更', edit_user_registration_path %>
-                <%= link_to 'ログアウト', destroy_user_session_path, :method => :delete %> 
+                <%= link_to 'ログアウト', destroy_user_session_path, :method => :delete %>
             <% else %>
                 <%= link_to 'サインアップ', new_user_registration_path %>
                 <%= link_to 'ログイン', new_user_session_path %>
